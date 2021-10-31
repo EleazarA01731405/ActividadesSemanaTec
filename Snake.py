@@ -18,6 +18,8 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 color = ["black","blue","green","purple","pink","yellow"]
+rancb = color[randint(0,len(color)-1)]
+rancf = color[randint(0,len(color)-1)]
 
 
 def change(x, y):
@@ -52,9 +54,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, color[randint(0,len(color)-1)])
+        square(body.x, body.y, 9, rancb)
 
-    square(food.x, food.y, 9, color[randint(0,len(color)-1)])
+    square(food.x, food.y, 9, rancf)
     update()
     ontimer(move, 100)
 
