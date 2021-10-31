@@ -15,10 +15,12 @@ from turtle import *
 
 from freegames import path
 
+contador = 0
+
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
-hide = [True] * 64
+hide = [True] * 64 
 
 
 def square(x, y):
@@ -46,8 +48,11 @@ def xy(count):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
+    global contador
     spot = index(x, y)
     mark = state['mark']
+    contador = contador + 1
+    print(contador)
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
@@ -88,5 +93,6 @@ addshape(car)
 hideturtle()
 tracer(False)
 onscreenclick(tap)
+print(contador)
 draw()
 done()
