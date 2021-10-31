@@ -58,6 +58,10 @@ def move():
 
     square(food.x, food.y, 9, rancf)
     update()
+    movimiento_comida = [-10,10]
+    if (food.x < 15*10 and food.x >-15*10) and (food.y <15*10 and food.y >-15*10):
+        food.x = food.x + movimiento_comida[randint(0,1)]
+        food.y = food.y + movimiento_comida[randint(0,1)] 
     ontimer(move, 100)
 
 
