@@ -13,15 +13,17 @@ Exercises:
 
 from random import *
 from turtle import *
+import turtle
 
 from freegames import path
 
 contador = 0
+contador_tiles = 0
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
-hide = [True] * 64 
+hide = [True] * 64
 
 
 def square(x, y):
@@ -49,7 +51,7 @@ def xy(count):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
-    global contador
+    global contador, contador_tiles
     spot = index(x, y)
     mark = state['mark']
     contador = contador + 1
@@ -61,6 +63,10 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        contador_tiles = contador_tiles + 1
+        if contador_tiles == 32:
+            print("Todos los cuadros han sido destapados")
+            turtle.bye() 
 
 
 def draw():
@@ -82,7 +88,7 @@ def draw():
         up()
         goto(x + 2, y)
         color('black')
-        if tiles[mark]==1 or tiles[mark]==2 or tiles[mark]==3 or tiles[mark]==4 or tiles[mark]==5 or tiles[mark]==6 or tiles[mark]==7 or tiles[mark]==9 or tiles[mark]==9:
+        if tiles[mark]==0 or tiles[mark]==1 or tiles[mark]==2 or tiles[mark]==3 or tiles[mark]==4 or tiles[mark]==5 or tiles[mark]==6 or tiles[mark]==7 or tiles[mark]==9 or tiles[mark]==9:
             write(str(tiles[mark]).center(3), font=('Arial', 30, 'normal'))
         else:
             write(str(tiles[mark]), font=('Arial', 30, 'normal'))
