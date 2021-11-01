@@ -1,4 +1,5 @@
-"""Memory, puzzle game of number pairs.
+"""
+Memory, puzzle game of number pairs.
 
 Exercises:
 
@@ -81,7 +82,10 @@ def draw():
         up()
         goto(x + 2, y)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        if tiles[mark]==1 or tiles[mark]==2 or tiles[mark]==3 or tiles[mark]==4 or tiles[mark]==5 or tiles[mark]==6 or tiles[mark]==7 or tiles[mark]==9 or tiles[mark]==9:
+            write(str(tiles[mark]).center(3), font=('Arial', 30, 'normal'))
+        else:
+            write(str(tiles[mark]), font=('Arial', 30, 'normal'))
 
     update()
     ontimer(draw, 100)
